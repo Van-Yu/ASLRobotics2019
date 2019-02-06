@@ -9,25 +9,26 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+
+import frc.robot.commands.DrivetrainCommand;
 /**
  * Add your docs here.
  */
 public class Drivetrain extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private WPI_TalonSRX FRONT_LEFT_DRIVE_MOTOR;
-  private WPI_TalonSRX BACK_LEFT_DRIVE_MOTOR;
-  private WPI_TalonSRX FRONT_RIGHT_DRIVE_MOTOR;
-  private WPI_TalonSRX BACK_RIGHT_DRIVE_MOTOR;
+  private WPI_TalonSRX frontLeft;
+  private WPI_TalonSRX backLeft;
+  private WPI_TalonSRX frontRight;
+  private WPI_TalonSRX backRight;
 
   public Drivetrain(){
-    FRONT_LEFT_DRIVE_MOTOR = new WPI_TalonSRX(RobotMap.FRONT_LEFT_DRIVE_MOTOR);
-    BACK_LEFT_DRIVE_MOTOR = new WPI_TalonSRX(RobotMap.BACK_LEFT_DRIVE_MOTOR);
-    FRONT_RIGHT_DRIVE_MOTOR = new WPI_TalonSRX(RobotMap.FRONT_RIGHT_DRIVE_MOTOR);
-    BACK_RIGHT_DRIVE_MOTOR = new WPI_TalonSRX(RobotMap.BACK_RIGHT_DRIVE_MOTOR);
+    frontLeft = new WPI_TalonSRX(RobotMap.FRONT_LEFT_DRIVE_MOTOR);
+    backLeft = new WPI_TalonSRX(RobotMap.BACK_LEFT_DRIVE_MOTOR);
+    frontRight = new WPI_TalonSRX(RobotMap.FRONT_RIGHT_DRIVE_MOTOR);
+    backRight = new WPI_TalonSRX(RobotMap.BACK_RIGHT_DRIVE_MOTOR);
 
   }
 
@@ -35,6 +36,6 @@ public class Drivetrain extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new Drivetrain());
+    setDefaultCommand(new DrivetrainCommand());
   }
 }
