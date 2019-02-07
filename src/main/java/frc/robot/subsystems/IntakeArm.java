@@ -18,6 +18,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
 
 public class IntakeArm extends Subsystem {
   private WPI_TalonSRX armMotor;
@@ -26,10 +27,10 @@ public class IntakeArm extends Subsystem {
   private DigitalInput armUp;
 
   public IntakeArm(){
-    armMotor = new WPI_TalonSRX(1);
-    wheelMotor = new WPI_TalonSRX(2);
-    armDown = new DigitalInput(3);
-    armUp = new DigitalInput(4);
+    armMotor = new WPI_TalonSRX(RobotMap.INTAKE_LIFT_MOTOR);
+    wheelMotor = new WPI_TalonSRX(RobotMap.INTAKE_MOTOR);
+    armDown = new DigitalInput(RobotMap.INTAKE_DOWN_LIMIT);
+    armUp = new DigitalInput(RobotMap.INTAKE_UP_LIMIT);
   }
 
   public void setArmMotor(Double speed){

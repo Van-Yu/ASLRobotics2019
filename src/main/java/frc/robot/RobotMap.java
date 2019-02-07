@@ -19,6 +19,10 @@ public class RobotMap {
   public static final int DRIVER_CONTROL_PORT = 0;
   public static final int OPERATOR_CONTROL_PORT = 1;
 
+  public static final int DEPLOY_ARM_BUTTON_PORT = 1;
+  public static final int RETRACT_ARM_BUTTON_PORT = 2;
+  public static final int HATCH_BUTTON_PORT = 3;
+
 
   // MOTORS
   public static final int FRONT_LEFT_DRIVE_MOTOR = 0;
@@ -30,7 +34,7 @@ public class RobotMap {
   public static final int ELEVATOR_MOTOR_2 = 5;
 
   public static final int INTAKE_MOTOR = 6;
-  public static final int INTAKE_LIFT_MOTOR = 7;
+      // public static final int INTAKE_LIFT_MOTOR = 7;
 
   public static final int LEFT_CARRIAGE_MOTOR = 8;
   public static final int RIGHT_CARRIAGE_MOTOR = 9;
@@ -39,6 +43,9 @@ public class RobotMap {
   // PISTONS
   public static final int HATCH_PISTON_1 = 0;
   public static final int HATCH_PISTON_2 = 1;
+
+  public static final int INTAKE_LIFT_PISTON_1 = 2;
+  public static final int INTAKE_LIFT_PISTON_2 = 3;
 
 
   // DIGITAL INPUTS
@@ -52,7 +59,7 @@ public class RobotMap {
 
   // SPEEDS
     // cargo
-  public static final double CARRIAGE_ARM_SPEED = 1.0;
+  public static final double CARRIAGE_SPEED = 1.0;
   public static final double INTAKE_LIFT_SPEED = .5;
 
     // elevator

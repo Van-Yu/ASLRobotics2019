@@ -15,20 +15,20 @@ public class ArmDown extends Command {
   private boolean isDown;
 
   public ArmDown() {
-    requires(Robot.intakeArm);
+    requires(Robot.INTAKE_ARM);
     isDown = false;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.intakeArm.setArmMotor(0.75);
+    Robot.INTAKE_ARM.setArmMotor(RobotMap.INTAKE_LIFT_SPEED);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    isDown=Robot.intakeArm.down();
+    isDown = Robot.INTAKE_ARM.down();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -40,13 +40,13 @@ public class ArmDown extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.intakeArm.setArmMotor(0.0);
+    Robot.INTAKE_ARM.setArmMotor(0.0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.intakeArm.setArmMotor(0.0);
+    Robot.INTAKE_ARM.setArmMotor(0.0);
   }
 }
