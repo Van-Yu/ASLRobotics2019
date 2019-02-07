@@ -52,7 +52,7 @@ public class RobotMap {
 
   // SPEEDS
     // cargo
-  public static final double CARRIAGE_ARM_SPEED = 1.0;
+  public static final double CARRIAGE_SPEED = 1.0;
   public static final double INTAKE_LIFT_SPEED = .5;
 
     // elevator
