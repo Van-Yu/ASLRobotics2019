@@ -16,13 +16,13 @@ import frc.robot.RobotMap;
  * 
  * @param <DoubleSolenoid>
  */
-public class armPiston extends Subsystem {
+public class ArmPiston extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
   private DoubleSolenoid arm;
 
-  public armPiston() {
+  public ArmPiston() {
     arm = new DoubleSolenoid(RobotMap.INTAKE_LIFT_PISTON_1,RobotMap.INTAKE_LIFT_PISTON_2);
   }
 
