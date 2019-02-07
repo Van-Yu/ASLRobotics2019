@@ -15,11 +15,11 @@ import frc.robot.RobotMap;
 /**
  * Add your docs here.
  */
-public class Carridge extends Subsystem {
+public class Carriage extends Subsystem {
   private WPI_TalonSRX leftCarridge;
   private WPI_TalonSRX rightCarridge;
 
-  public Carridge(){
+  public Carriage(){
     leftCarridge = new WPI_TalonSRX(RobotMap.LEFT_CARRIAGE_MOTOR);
     rightCarridge = new WPI_TalonSRX(RobotMap.RIGHT_CARRIAGE_MOTOR);
   }
