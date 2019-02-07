@@ -10,15 +10,15 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class AquireCargo extends Command {
-  public AquireCargo() {
+public class AcquireCargo extends Command {
+  public AcquireCargo() {
     requires(Robot.CARRIAGE);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.CARRIAGE.aquire();
+    Robot.CARRIAGE.acquire();
   }
 
   // Called repeatedly when this Command is scheduled to run
