@@ -31,7 +31,7 @@ public class BeginIntake extends CommandGroup {
     // e.g. if Command1 requires chassis, and Command2 requires arm,
     // a CommandGroup containing them would require both the chassis and the
     // arm.
-    if (!Robot.intakeArm.up()){
+    if (!Robot.INTAKE_ARM.up()) {
       addSequential(new ArmUp());
     }
     addSequential(new StartWheels());
