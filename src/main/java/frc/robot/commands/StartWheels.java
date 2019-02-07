@@ -12,13 +12,13 @@ import frc.robot.Robot;
 
 public class StartWheels extends Command {
   public StartWheels() {
-    requires(Robot.INTAKE_ARM);
+    requires(Robot.INTAKE_WHEELS);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.INTAKE_ARM.setWheelMotor(1.0);
+    Robot.INTAKE_WHEELS.setWheelMotor(1.0);
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -35,13 +35,13 @@ public class StartWheels extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.INTAKE_ARM.setWheelMotor(0.0);
+    Robot.INTAKE_WHEELS.setWheelMotor(0.0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.INTAKE_ARM.setWheelMotor(0.0);
+    Robot.INTAKE_WHEELS.setWheelMotor(0.0);
   }
 }
