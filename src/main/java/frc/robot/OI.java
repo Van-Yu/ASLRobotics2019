@@ -17,17 +17,21 @@ import frc.robot.commands.*;
  */
 public class OI {
 
-  public final Joystick DRIVER = new Joystick(0);
-  public final Joystick OPERATOR = new Joystick(1);
+  public final Joystick DRIVER = new Joystick(RobotMap.DRIVER_CONTROL_PORT);
+  public final Joystick OPERATOR = new Joystick(RobotMap.OPERATOR_CONTROL_PORT);
 
-  private final JoystickButton DEPLOY_ARM = new JoystickButton(OPERATOR, 1);
-  private final JoystickButton RETRACT_ARM = new JoystickButton(OPERATOR, 2);
+  private final JoystickButton DEPLOY_ARM = new JoystickButton(OPERATOR, RobotMap.DEPLOY_ARM_BUTTON_PORT);
+  private final JoystickButton RETRACT_ARM = new JoystickButton(OPERATOR, RobotMap.RETRACT_ARM_BUTTON_PORT);
 
+  private final JoystickButton HATCH_BUTTON = new JoystickButton(OPERATOR, RobotMap.HATCH_BUTTON_PORT);
 
   public OI() {
-    DEPLOY_ARM.whileHeld(new BeginIntake());
+    DEPLOY_ARM.whileHeld(new StartWheels());
     DEPLOY_ARM.whenPressed(new ArmUp());
+
     RETRACT_ARM.whenPressed(new ArmDown());
+
+    HATCH_BUTTON.whenPressed(new HatchCommand());
   }
 
 
