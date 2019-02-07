@@ -15,14 +15,14 @@ public class HatchForward extends Command {
   public HatchForward() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.hatchPiston);
+    requires(Robot.HATCH);
     //needs hatchPiston in Robot
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.hatchPiston.setForward();
+    Robot.HATCH.setForward();
     startTime = System.currentTimeMillis();
   }
 
@@ -40,7 +40,7 @@ public class HatchForward extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.hatchPiston.setOff();
+    Robot.HATCH.setOff();
   }
 
   // Called when another command which requires one or more of the same
