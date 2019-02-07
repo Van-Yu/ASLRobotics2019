@@ -16,16 +16,16 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-import edu.wpi.first.wpilibj.DigitalInput;
+//import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class CargoIntakeWheels extends Subsystem {
+public class IntakeWheels extends Subsystem {
   //private WPI_TalonSRX armMotor;
   private WPI_TalonSRX wheelMotor;
   //private DigitalInput armDown;
   //private DigitalInput armUp;
 
-  public CargoIntakeWheels(){
+  public IntakeWheels(){
     //armMotor = new WPI_TalonSRX(1);
     wheelMotor = new WPI_TalonSRX(2);
     //armDown = new DigitalInput(3);
