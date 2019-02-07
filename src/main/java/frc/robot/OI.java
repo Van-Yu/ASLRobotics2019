@@ -25,6 +25,9 @@ public class OI {
 
   private final JoystickButton HATCH_BUTTON = new JoystickButton(OPERATOR, RobotMap.HATCH_BUTTON_PORT);
 
+  private final JoystickButton ELEVATOR_UP_BUTTON = new JoystickButton(OPERATOR, RobotMap.ELEVATOR_UP_BUTTON_PORT);
+  private final JoystickButton ELEVATOR_DOWN_BUTTON = new JoystickButton(OPERATOR, RobotMap.ELEVATOR_DOWN_BUTTON_PORT);
+
   public OI() {
     DEPLOY_ARM.whileHeld(new StartWheels());
     DEPLOY_ARM.whenPressed(new ArmUp());
@@ -32,6 +35,9 @@ public class OI {
     RETRACT_ARM.whenPressed(new ArmDown());
 
     HATCH_BUTTON.whenPressed(new HatchCommand());
+
+    ELEVATOR_UP_BUTTON.whenPressed(new ElevatorIncrement());
+    ELEVATOR_DOWN_BUTTON.whenPressed(new ElevatorDecrement());
   }
 
 
