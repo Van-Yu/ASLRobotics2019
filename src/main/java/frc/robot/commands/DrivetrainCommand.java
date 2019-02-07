@@ -26,7 +26,7 @@ public class DrivetrainCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.DRIVETRAIN.arcadeDrive(Robot.oi.stick.getRawAxis(1), Robot.oi.stick.getRawAxis(3));
+    Robot.DRIVETRAIN.arcadeDrive(Robot.oi.DRIVER.getRawAxis(1), Robot.oi.DRIVER.getRawAxis(3));
   }
 
   // Make this return true when this Command no longer needs to run execute()
