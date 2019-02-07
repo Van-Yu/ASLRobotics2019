@@ -9,21 +9,16 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
-public class ArmUp extends Command {
-
-  private Long startTime;
-
-  public ArmUp() {
-    requires(Robot.ARM_PISTON);
+public class ReleaseCargo extends Command {
+  public ReleaseCargo() {
+    requires(Robot.CARRIDGE);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.ARM_PISTON.setReverse();
-    startTime = System.currentTimeMillis();
+    Robot.CARRIDGE.release();
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -34,19 +29,19 @@ public class ArmUp extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return startTime + RobotMap.PISTON_DELAY_TIME <= System.currentTimeMillis();
+    return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.ARM_PISTON.setOff();
+    Robot.CARRIDGE.stopCarridge();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.ARM_PISTON.setOff();
+    Robot.CARRIDGE.stopCarridge();
   }
 }

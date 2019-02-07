@@ -9,44 +9,44 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class ArmDown extends Command {
-  
-  private boolean isDown;
+
+  private Long startTime;
 
   public ArmDown() {
-    requires(Robot.INTAKE_ARM);
-    isDown = false;
+    requires(Robot.ARM_PISTON);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.INTAKE_ARM.setArmMotor(RobotMap.INTAKE_LIFT_SPEED);
+    Robot.ARM_PISTON.setReverse();
+    startTime = System.currentTimeMillis();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    isDown = Robot.INTAKE_ARM.down();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return isDown;
+    return startTime + RobotMap.PISTON_DELAY_TIME <= System.currentTimeMillis();
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.INTAKE_ARM.setArmMotor(0.0);
+    Robot.ARM_PISTON.setOff();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.INTAKE_ARM.setArmMotor(0.0);
+    Robot.ARM_PISTON.setOff();
   }
 }
