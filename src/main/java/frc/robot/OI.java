@@ -8,6 +8,8 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -15,6 +17,18 @@ import edu.wpi.first.wpilibj.Joystick;
  */
 public class OI {
 
-  public final Joystick stick = new Joystick(0);
+  public final Joystick DRIVER = new Joystick(0);
+  public final Joystick OPERATOR = new Joystick(1);
+
+  private final JoystickButton DEPLOY_ARM = new JoystickButton(OPERATOR, 1);
+  private final JoystickButton RETRACT_ARM = new JoystickButton(OPERATOR, 2);
+
+
+  public OI() {
+    DEPLOY_ARM.whileHeld(new BeginIntake());
+    DEPLOY_ARM.whenPressed(new ArmUp());
+    RETRACT_ARM.whenPressed(new ArmDown());
+  }
+
 
 }

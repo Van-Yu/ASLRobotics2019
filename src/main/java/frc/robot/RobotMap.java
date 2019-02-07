@@ -34,5 +34,14 @@ public class RobotMap {
   // PISTONS
   public static final int HATCH_PISTON_1 = 0;
   public static final int HATCH_PISTON_2 = 1;
+
+
+  // DIGITAL INPUTS
+  public static final int PHOTO_SWITCH_LEFT = 0;
+  public static final int PHOTO_SWITCH_CENTER = 1;
+  public static final int PHOTO_SWITCH_RIGHT = 2;
+
+  public static final int INTAKE_UP_LIMIT = 3;
+  public static final int INTAKE_DOWN_LIMIT = 4;
   
 }
