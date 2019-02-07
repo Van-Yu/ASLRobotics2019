@@ -15,6 +15,11 @@ package frc.robot;
  */
 public class RobotMap {
 
+  // OI Ports
+  public static final int DRIVER_CONTROL_PORT = 0;
+  public static final int OPERATOR_CONTROL_PORT = 1;
+
+
   // MOTORS
   public static final int FRONT_LEFT_DRIVE_MOTOR = 0;
   public static final int BACK_LEFT_DRIVE_MOTOR = 1;
@@ -43,5 +48,19 @@ public class RobotMap {
 
   public static final int INTAKE_UP_LIMIT = 3;
   public static final int INTAKE_DOWN_LIMIT = 4;
+
+
+  // SPEEDS
+    // cargo
+  public static final double CARRIAGE_ARM_SPEED = 1.0;
+  public static final double INTAKE_LIFT_SPEED = .5;
+
+    // elevator
+  public static final double ELEVATOR_LIFT_SPEED = .4;
+  public static final double ELEVATOR_DOWN_SPEED = -.4;
+
+
+  // OTHER
+  public static final int PISTON_DELAY_TIME = 1000;
   
 }
