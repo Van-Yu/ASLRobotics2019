@@ -9,20 +9,21 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class HatchReverse extends Command {
   private long startTime;
   public HatchReverse() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.hatchPiston);
+    requires(Robot.HATCH);
     //needs hatchPiston in Robot
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.hatchPiston.setReverse();
+    Robot.HATCH.setReverse();
     startTime = System.currentTimeMillis();
   }
 
@@ -34,13 +35,13 @@ public class HatchReverse extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return startTime + 500 <= System.currentTimeMillis();
+    return startTime + RobotMap.PISTON_DELAY_TIME <= System.currentTimeMillis();
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.hatchPiston.setOff();
+    Robot.HATCH.setOff();
   }
 
   // Called when another command which requires one or more of the same
