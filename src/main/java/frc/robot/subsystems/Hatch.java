@@ -25,10 +25,10 @@ public void setForward(){
   HATCH.set(DoubleSolenoid.Value.kForward);
 }
 public void setReverse(){
-  HATCH.set(DoubleSolenoid.Value.kForward);
+  HATCH.set(DoubleSolenoid.Value.kReverse);
 }
 public void setOff(){
-  HATCH.set(DoubleSolenoid.Value.kForward);
+  HATCH.set(DoubleSolenoid.Value.kOff);
 }
   @Override
   public void initDefaultCommand() {
