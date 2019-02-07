@@ -8,16 +8,22 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 
 public class HatchForward extends Command {
+  private long startTime;
   public HatchForward() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.hatchPiston);
+    //needs hatchPiston in Robot
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.hatchPiston.setForward();
+    startTime = System.currentTimeMillis();
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -28,17 +34,19 @@ public class HatchForward extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return startTime + 500 <= System.currentTimeMillis();
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.hatchPiston.setOff();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }
