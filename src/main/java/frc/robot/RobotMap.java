@@ -34,7 +34,7 @@ public class RobotMap {
   public static final int ELEVATOR_MOTOR_2 = 5;
 
   public static final int INTAKE_MOTOR = 6;
-  public static final int INTAKE_LIFT_MOTOR = 7;
+      // public static final int INTAKE_LIFT_MOTOR = 7;
 
   public static final int LEFT_CARRIAGE_MOTOR = 8;
   public static final int RIGHT_CARRIAGE_MOTOR = 9;
@@ -43,6 +43,9 @@ public class RobotMap {
   // PISTONS
   public static final int HATCH_PISTON_1 = 0;
   public static final int HATCH_PISTON_2 = 1;
+
+  public static final int INTAKE_LIFT_PISTON_1 = 2;
+  public static final int INTAKE_LIFT_PISTON_2 = 3;
 
 
   // DIGITAL INPUTS
