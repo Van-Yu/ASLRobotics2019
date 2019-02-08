@@ -16,15 +16,23 @@ package frc.robot;
 public class RobotMap {
 
   // OI Ports
+    // joysticks
   public static final int DRIVER_CONTROL_PORT = 0;
   public static final int OPERATOR_CONTROL_PORT = 1;
 
-  public static final int DEPLOY_ARM_BUTTON_PORT = 1;
-  public static final int RETRACT_ARM_BUTTON_PORT = 2;
+    // buttons
+  public static final int CARGO_BUTTON_PORT = 1;
   public static final int HATCH_BUTTON_PORT = 3;
+
+  public static final int DEPLOY_CARGO_BUTTON_PORT = 4;
 
   public static final int ELEVATOR_UP_BUTTON_PORT = 5;
   public static final int ELEVATOR_DOWN_BUTTON_PORT = 6;
+
+    // axes
+  public static final int DRIVE_FORWARD_AXIS = 1;
+  public static final int DRIVE_TURN_AXIS = 4;
+
 
   // MOTORS
   public static final int FRONT_LEFT_DRIVE_MOTOR = 0;
