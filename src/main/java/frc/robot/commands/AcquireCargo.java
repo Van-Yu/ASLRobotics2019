@@ -10,15 +10,15 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class AquireCargo extends Command {
-  public AquireCargo() {
-    requires(Robot.CARRIDGE);
+public class AcquireCargo extends Command {
+  public AcquireCargo() {
+    requires(Robot.CARRIAGE);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.CARRIDGE.aquire();
+    Robot.CARRIAGE.acquire();
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -35,13 +35,13 @@ public class AquireCargo extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.CARRIDGE.stopCarridge();
+    Robot.CARRIAGE.stopCarridge();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.CARRIDGE.stopCarridge();
+    Robot.CARRIAGE.stopCarridge();
   }
 }
