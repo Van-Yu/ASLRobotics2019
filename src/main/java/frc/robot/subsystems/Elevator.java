@@ -21,9 +21,9 @@ import frc.robot.commands.ElevatorMoveCommand;
  */
 public class Elevator extends Subsystem {
   
-  private final double[] ENCODER_INCREMENTS = {30, 10}; // CHANGE THESE
+  // 30 60 90- hatch 40 70 100- ball
+  private final double[] ENCODER_VALUES = {0, 30, 40, 60, 70, 90, 100}; // CHANGE THESE
   private final double MAX_HEIGHT = 300;
-  private int state = 0;
 
   // Hardware Inits
   private WPI_TalonSRX pulleyMotor;
@@ -38,9 +38,9 @@ public class Elevator extends Subsystem {
     pulleyMotor.setSelectedSensorPosition(0, 0, 10);
   }
 
-  public void increment() {
+  public void setStage(int stage) { //0 - botton, 1- 1, 2 - 2, etc.
     //increments the distance by either 30 or 10, depending on even or odd.
-    double encoderValue = getEncoderDistance() + ((RobotMap.hasBall) ? ENCODER_INCREMENTS[0] : ENCODER_INCREMENTS[1]);
+    double encoderValue = ((RobotMap.hasBall) ? ENCODER_VALUES[stage * 2] : ENCODER_VALUES[Math.max(0, stage * 2 - 1)]);
     if(encoderValue > MAX_HEIGHT) {
       encoderValue = MAX_HEIGHT;
     }
@@ -48,18 +48,12 @@ public class Elevator extends Subsystem {
     setMotorPosition(encoderValue);
   }
 
-  public void decrement() {
-    //increments the distance by either 30 or 10, depending on even or odd.
-    double encoderValue = getEncoderDistance() - ((RobotMap.hasBall) ? ENCODER_INCREMENTS[0] : ENCODER_INCREMENTS[1]);
-    if(encoderValue < 0) {
-      encoderValue = 0;
-    }
-
-    setMotorPosition(encoderValue);
-  }
-
   public void updateSensor() {
     RobotMap.hasBall = ballSensor.get();
+  }
+
+  public double getTargetDistance(int stage) { 
+    return ((RobotMap.hasBall) ? ENCODER_VALUES[stage * 2] : ENCODER_VALUES[Math.max(0, stage * 2 - 1)]); 
   }
 
   public double getEncoderDistance() { return pulleyMotor.getSelectedSensorPosition(); }
