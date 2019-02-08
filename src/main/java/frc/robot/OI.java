@@ -40,8 +40,8 @@ public class OI {
 
     HATCH_BUTTON.whenPressed(new HatchCommand());
 
-    ELEVATOR_UP_BUTTON.whileHeld(new ElevatorIncrement());
-    ELEVATOR_DOWN_BUTTON.whileHeld(new ElevatorDecrement());
+    // ELEVATOR_UP_BUTTON.whileHeld(new ElevatorIncrement());
+    // ELEVATOR_DOWN_BUTTON.whileHeld(new ElevatorDecrement());
   }
 
 
