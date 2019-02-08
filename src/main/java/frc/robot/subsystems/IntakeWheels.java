@@ -18,6 +18,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 //import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
 
 public class IntakeWheels extends Subsystem {
   //private WPI_TalonSRX armMotor;
@@ -27,7 +28,7 @@ public class IntakeWheels extends Subsystem {
 
   public IntakeWheels(){
     //armMotor = new WPI_TalonSRX(1);
-    wheelMotor = new WPI_TalonSRX(2);
+    wheelMotor = new WPI_TalonSRX(RobotMap.INTAKE_MOTOR);
     //armDown = new DigitalInput(3);
     //armUp = new DigitalInput(4);
   }
