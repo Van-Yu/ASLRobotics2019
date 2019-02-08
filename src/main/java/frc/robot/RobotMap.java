@@ -16,20 +16,28 @@ package frc.robot;
 public class RobotMap {
 
   // OI Ports
-  public static final int DRIVER_CONTROL_PORT = 0;
-  public static final int OPERATOR_CONTROL_PORT = 1;
+    // joysticks
+  public static final int DRIVER_CONTROL_PORT = 1;
+  public static final int OPERATOR_CONTROL_PORT = 0;
 
-  public static final int DEPLOY_ARM_BUTTON_PORT = 1;
-  public static final int RETRACT_ARM_BUTTON_PORT = 2;
-  public static final int HATCH_BUTTON_PORT = 3;
+    // buttons
+  public static final int CARGO_BUTTON_PORT = 2;
+  public static final int HATCH_BUTTON_PORT = 6;
 
-  public static final int ELEVATOR_UP_BUTTON_PORT = 5;
+  public static final int DEPLOY_CARGO_BUTTON_PORT = 1;
+
+  public static final int ELEVATOR_UP_BUTTON_PORT = 7;
   public static final int ELEVATOR_DOWN_BUTTON_PORT = 6;
 
+    // axes
+  public static final int DRIVE_FORWARD_AXIS = 1;
+  public static final int DRIVE_TURN_AXIS = 4;
+
+
   // MOTORS
-  public static final int FRONT_LEFT_DRIVE_MOTOR = 0;
+  public static final int FRONT_LEFT_DRIVE_MOTOR = 2;
   public static final int BACK_LEFT_DRIVE_MOTOR = 1;
-  public static final int FRONT_RIGHT_DRIVE_MOTOR = 2;
+  public static final int FRONT_RIGHT_DRIVE_MOTOR = 4;
   public static final int BACK_RIGHT_DRIVE_MOTOR = 3;
 
   public static final int ELEVATOR_MOTOR = 5;
@@ -37,8 +45,8 @@ public class RobotMap {
   public static final int INTAKE_MOTOR = 6;
       // public static final int INTAKE_LIFT_MOTOR = 7;
 
-  public static final int LEFT_CARRIAGE_MOTOR = 8;
-  public static final int RIGHT_CARRIAGE_MOTOR = 9;
+  public static final int LEFT_CARRIAGE_MOTOR = 7;
+  public static final int RIGHT_CARRIAGE_MOTOR = 8;
 
 
   // PISTONS
@@ -60,7 +68,7 @@ public class RobotMap {
 
   // SPEEDS
     // cargo
-  public static final double CARRIAGE_SPEED = 1.0;
+  public static final double CARRIAGE_SPEED = .5;
   public static final double INTAKE_LIFT_SPEED = .5;
 
     // elevator
@@ -70,5 +78,6 @@ public class RobotMap {
 
   // OTHER
   public static final int PISTON_DELAY_TIME = 1000;
+  public static boolean hasBall = false;
   
 }
