@@ -13,23 +13,30 @@ import frc.robot.RobotMap;
 
 /**
  * Add your docs here.
+ * 
+ * @param <DoubleSolenoid>
  */
-public class Hatch extends Subsystem {
+public class ArmPiston extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private DoubleSolenoid hatchPiston;
-public Hatch(){
-  hatchPiston = new DoubleSolenoid(RobotMap.HATCH_PISTON_1,RobotMap.HATCH_PISTON_2);
-}
-public void setForward(){
-  hatchPiston.set(DoubleSolenoid.Value.kForward);
-}
-public void setReverse(){
-  hatchPiston.set(DoubleSolenoid.Value.kReverse);
-}
-public void setOff(){
-  hatchPiston.set(DoubleSolenoid.Value.kOff);
-}
+
+  private DoubleSolenoid arm;
+
+  public ArmPiston() {
+    arm = new DoubleSolenoid(RobotMap.INTAKE_LIFT_PISTON_1,RobotMap.INTAKE_LIFT_PISTON_2);
+  }
+
+  public void setForward(){
+    arm.set(DoubleSolenoid.Value.kForward);
+  }
+  public void setReverse(){
+    arm.set(DoubleSolenoid.Value.kReverse);
+  }
+  public void setOff(){
+    arm.set(DoubleSolenoid.Value.kOff);
+  }
+
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

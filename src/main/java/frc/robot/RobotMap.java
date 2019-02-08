@@ -23,6 +23,8 @@ public class RobotMap {
   public static final int RETRACT_ARM_BUTTON_PORT = 2;
   public static final int HATCH_BUTTON_PORT = 3;
 
+  public static final int ELEVATOR_UP_BUTTON_PORT = 5;
+  public static final int ELEVATOR_DOWN_BUTTON_PORT = 6;
 
   // MOTORS
   public static final int FRONT_LEFT_DRIVE_MOTOR = 0;
@@ -30,8 +32,7 @@ public class RobotMap {
   public static final int FRONT_RIGHT_DRIVE_MOTOR = 2;
   public static final int BACK_RIGHT_DRIVE_MOTOR = 3;
 
-  public static final int ELEVATOR_MOTOR_1 = 4;
-  public static final int ELEVATOR_MOTOR_2 = 5;
+  public static final int ELEVATOR_MOTOR = 5;
 
   public static final int INTAKE_MOTOR = 6;
       // public static final int INTAKE_LIFT_MOTOR = 7;
