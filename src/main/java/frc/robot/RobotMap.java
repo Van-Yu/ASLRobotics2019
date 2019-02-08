@@ -64,6 +64,7 @@ public class RobotMap {
 
   public static final int INTAKE_UP_LIMIT = 3;
   public static final int INTAKE_DOWN_LIMIT = 4;
+  public static final int ELEVATOR_BALL_SWITCH = 5;
 
 
   // SPEEDS
