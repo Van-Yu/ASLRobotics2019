@@ -26,8 +26,8 @@ public class RobotMap {
 
   public static final int DEPLOY_CARGO_BUTTON_PORT = 1;
 
-  // public static final int ELEVATOR_UP_BUTTON_PORT = 5;
-  // public static final int ELEVATOR_DOWN_BUTTON_PORT = 6;
+  public static final int ELEVATOR_UP_BUTTON_PORT = 7;
+  public static final int ELEVATOR_DOWN_BUTTON_PORT = 6;
 
     // axes
   public static final int DRIVE_FORWARD_AXIS = 1;
@@ -78,5 +78,6 @@ public class RobotMap {
 
   // OTHER
   public static final int PISTON_DELAY_TIME = 1000;
+  public static boolean hasBall = false;
   
 }
