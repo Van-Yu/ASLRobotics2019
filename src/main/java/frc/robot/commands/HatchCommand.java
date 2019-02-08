@@ -17,6 +17,6 @@ public class HatchCommand extends CommandGroup {
 
     addSequential(new HatchForward());
     addSequential(new HatchReverse());
-  
+ 
   }
 }
