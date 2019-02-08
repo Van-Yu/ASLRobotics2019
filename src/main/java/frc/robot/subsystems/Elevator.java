@@ -12,6 +12,7 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
 import frc.robot.commands.ElevatorMoveCommand;
 
 /**
@@ -27,7 +28,7 @@ public class Elevator extends Subsystem {
   private WPI_TalonSRX pulleyMotor;
 
   public Elevator() {
-    this.pulleyMotor = new WPI_TalonSRX(5);
+    this.pulleyMotor = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR);
 
     pulleyMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
 		pulleyMotor.setSensorPhase(true);

@@ -20,18 +20,22 @@ public class OI {
   public final Joystick DRIVER = new Joystick(RobotMap.DRIVER_CONTROL_PORT);
   public final Joystick OPERATOR = new Joystick(RobotMap.OPERATOR_CONTROL_PORT);
 
-  private final JoystickButton DEPLOY_ARM = new JoystickButton(OPERATOR, RobotMap.DEPLOY_ARM_BUTTON_PORT);
-  private final JoystickButton RETRACT_ARM = new JoystickButton(OPERATOR, RobotMap.RETRACT_ARM_BUTTON_PORT);
+  private final JoystickButton CARGO_BUTTON = new JoystickButton(OPERATOR, RobotMap.CARGO_BUTTON_PORT);
 
   private final JoystickButton HATCH_BUTTON = new JoystickButton(OPERATOR, RobotMap.HATCH_BUTTON_PORT);
 
-  public OI() {
-    DEPLOY_ARM.whileHeld(new StartWheels());
-    DEPLOY_ARM.whenPressed(new ArmUp());
+  private final JoystickButton ELEVATOR_UP_BUTTON = new JoystickButton(OPERATOR, RobotMap.ELEVATOR_UP_BUTTON_PORT);
+  private final JoystickButton ELEVATOR_DOWN_BUTTON = new JoystickButton(OPERATOR, RobotMap.ELEVATOR_DOWN_BUTTON_PORT);
 
-    RETRACT_ARM.whenPressed(new ArmDown());
+  public OI() {
+    CARGO_BUTTON.whileHeld(new StartWheels());
+    CARGO_BUTTON.whenPressed(new ArmUp());
+    CARGO_BUTTON.whenReleased(new ArmDown());
 
     HATCH_BUTTON.whenPressed(new HatchCommand());
+
+    // ELEVATOR_UP_BUTTON.whenPressed(new ElevatorIncrement());
+    // ELEVATOR_DOWN_BUTTON.whenPressed(new ElevatorDecrement());
   }
 
 

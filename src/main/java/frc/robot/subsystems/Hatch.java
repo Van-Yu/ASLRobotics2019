@@ -17,18 +17,18 @@ import frc.robot.RobotMap;
 public class Hatch extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private DoubleSolenoid HATCH;
+  private DoubleSolenoid hatchPiston;
 public Hatch(){
-  HATCH = new DoubleSolenoid(RobotMap.HATCH_PISTON_1,RobotMap.HATCH_PISTON_2);
+  hatchPiston = new DoubleSolenoid(RobotMap.HATCH_PISTON_1,RobotMap.HATCH_PISTON_2);
 }
 public void setForward(){
-  HATCH.set(DoubleSolenoid.Value.kForward);
+  hatchPiston.set(DoubleSolenoid.Value.kForward);
 }
 public void setReverse(){
-  HATCH.set(DoubleSolenoid.Value.kReverse);
+  hatchPiston.set(DoubleSolenoid.Value.kReverse);
 }
 public void setOff(){
-  HATCH.set(DoubleSolenoid.Value.kOff);
+  hatchPiston.set(DoubleSolenoid.Value.kOff);
 }
   @Override
   public void initDefaultCommand() {
