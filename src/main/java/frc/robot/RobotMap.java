@@ -22,16 +22,22 @@ public class RobotMap {
 
     // buttons
   public static final int CARGO_BUTTON_PORT = 2;
-  public static final int HATCH_BUTTON_PORT = 6;
+  public static final int CARGO_ARM_DOWN_BUTTON_PORT = 10;
 
-  public static final int DEPLOY_CARGO_BUTTON_PORT = 1;
+  public static final int DEPLOY_CARGO_BUTTON_PORT = 6;
 
-  public static final int ELEVATOR_UP_BUTTON_PORT = 7;
-  public static final int ELEVATOR_DOWN_BUTTON_PORT = 6;
+  public static final int HATCH_BUTTON_PORT = 5;
+
+  public static final int ELEVATOR_1_BUTTON_PORT = 1;
+  public static final int ELEVATOR_2_BUTTON_PORT = 3;
+  public static final int ELEVATOR_3_BUTTON_PORT = 4;
+  public static final int ELEVATOR_INTERRUPT_BUTTON_PORT = 9;
 
     // axes
   public static final int DRIVE_FORWARD_AXIS = 1;
   public static final int DRIVE_TURN_AXIS = 4;
+
+  public static final int OPERATOR_ELEVATOR_AXIS = 1;
 
 
   // MOTORS
