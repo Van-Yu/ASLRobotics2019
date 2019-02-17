@@ -25,12 +25,12 @@ public class RobotMap {
   public static final int LINE_FOLLOW_RIGHT_BUTTON_PORT = 6;
 
   
-  public static final int CARGO_BUTTON_PORT = 2;
-  public static final int CARGO_ARM_DOWN_BUTTON_PORT = 10;
+  public static final int CARGO_BUTTON_PORT = 6;
+  public static final int CARGO_ARM_DOWN_BUTTON_PORT = 9;
 
-  public static final int DEPLOY_CARGO_BUTTON_PORT = 6;
+  public static final int DEPLOY_CARGO_BUTTON_PORT = 5;
 
-  public static final int HATCH_BUTTON_PORT = 5;
+  public static final int HATCH_BUTTON_PORT = 3;
 
   // public static final int ELEVATOR_1_BUTTON_PORT = 1;
   // public static final int ELEVATOR_2_BUTTON_PORT = 3;
@@ -41,7 +41,7 @@ public class RobotMap {
   public static final int DRIVE_FORWARD_AXIS = 1;
   public static final int DRIVE_TURN_AXIS = 4;
 
-  public static final int OPERATOR_ELEVATOR_AXIS = 1;
+  public static final int OPERATOR_ELEVATOR_AXIS = 5;
 
 
   // MOTORS
@@ -60,21 +60,22 @@ public class RobotMap {
 
 
   // PISTONS
-  public static final int HATCH_PISTON_1 = 2;
-  public static final int HATCH_PISTON_2 = 3;
+  public static final int HATCH_PISTON_1 = 3;
+  public static final int HATCH_PISTON_2 = 2;
 
-  public static final int INTAKE_LIFT_PISTON_1 = 1;
-  public static final int INTAKE_LIFT_PISTON_2 = 0;
+  public static final int INTAKE_LIFT_PISTON_1 = 0;
+  public static final int INTAKE_LIFT_PISTON_2 = 1;
 
 
   // DIGITAL INPUTS
-  public static final int PHOTO_SWITCH_LEFT = 0;
-  public static final int PHOTO_SWITCH_CENTER = 1;
-  public static final int PHOTO_SWITCH_RIGHT = 2;
+  public static final int PHOTO_SWITCH_LEFT = 1;
+  public static final int PHOTO_SWITCH_CENTER = 2;
+  public static final int PHOTO_SWITCH_RIGHT = 3;
 
   // public static final int INTAKE_UP_LIMIT = 3;
   // public static final int INTAKE_DOWN_LIMIT = 4;
-  public static final int ELEVATOR_BALL_SWITCH = 3;
+  public static final int HAS_BALL_SWITCH = 4;
+  public static final int ELEVATOR_DOWN_SWITCH = 0;
 
 
   // SPEEDS
@@ -91,5 +92,5 @@ public class RobotMap {
   // OTHER
   public static final int PISTON_DELAY_TIME = 1000;
   public static boolean hasBall = false;
-  
+
 }

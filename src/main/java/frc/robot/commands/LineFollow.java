@@ -27,8 +27,8 @@ public class LineFollow extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    right = .25;
-    left = .5;
+    right = .4;
+    left = .4;
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -39,30 +39,30 @@ public class LineFollow extends Command {
     // if(sensors.equals("000") || sensors.equals("111")){
     if (sensors.equals("000") || sensors.equals("111")) {
       if (direction == Direction.RIGHT) {
-        left = .25;
-        right = -.25;
+        left = .4;
+        right = -.4;
       } else {
-        left = -.25;
-        right = .25;
+        left = -.4;
+        right = .4;
       }
     } else if (sensors.equals("010")) {
-      left = .25;
-      right = .25;
+      left = .4;
+      right = .4;
     } else if (sensors.equals("001") || sensors.equals("011")) {
       if ((int) (left * 10) == (int) (-left * 10)) {
-        left = .25;
-        right = .25;
+        left = .4;
+        right = .4;
       }
-      left += .002;
-      right -= .002;
+      left += .003;
+      right -= .003;
       direction = Direction.RIGHT;
     } else if (sensors.equals("100") || sensors.equals("110")) {
       if ((int) (left * 10) == (int) (-left * 10)) {
-        left = .25;
-        right = .25;
+        left = .4;
+        right = .4;
       }
-      left -= .002;
-      right += .002;
+      left -= .003;
+      right += .003;
       direction = Direction.LEFT;
     }
 
