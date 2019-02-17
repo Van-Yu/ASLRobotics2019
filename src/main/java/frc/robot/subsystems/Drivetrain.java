@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -47,6 +48,13 @@ public class Drivetrain extends Subsystem {
     l = new DigitalInput(RobotMap.PHOTO_SWITCH_LEFT);
     c = new DigitalInput(RobotMap.PHOTO_SWITCH_CENTER);
     r = new DigitalInput(RobotMap.PHOTO_SWITCH_RIGHT);
+
+    frontLeft.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
+    frontLeft.setSensorPhase(true);
+
+    frontRight.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
+    frontRight.setSensorPhase(true);
+
 
   }
   public void tankDrive(double leftSpeed, double rightSpeed){
