@@ -9,48 +9,43 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
-public class ElevatorAutoCommand extends Command {
+public class ElevatorSetStage extends Command {
 
-  private double[] targets;
+  private int stg;
 
-  public ElevatorAutoCommand() {
+  public ElevatorSetStage(int stage) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.ELEVATOR);
+    this.stg = stage;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.ELEVATOR.checkForBall();
+    Robot.ELEVATOR.stage = stg;
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //if(Robot.ELEVATOR.isDown()) Robot.ELEVATOR.
-    targets = Robot.ELEVATOR.getTargetArray();
-    if(!RobotMap.hasBall && !Robot.ELEVATOR.isDown()) Robot.ELEVATOR.setMotorSpeed(-.25);
-    else Robot.ELEVATOR.setMotorPosition(targets[Robot.ELEVATOR.stage]);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.ELEVATOR.stopMotor();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    end();
   }
 }

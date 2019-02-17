@@ -53,14 +53,19 @@ public class Drivetrain extends Subsystem {
     driveTrain.tankDrive(leftSpeed, rightSpeed);
   }
   public void arcadeDrive(double x, double z){
-    driveTrain.arcadeDrive(Math.pow(x, 2), Math.pow(z, 2));
+    driveTrain.arcadeDrive(x, z*.7);
   }
 
-  public String getPESensors(){
+  public String getPESensors(){ // REVERSE THIS AT COMPETITION
     String ret = "";
-    ret += l.get()? "1" : "0";
-    ret += c.get()? "1" : "0";
-    ret += r.get()? "1" : "0";
+
+    // ret += l.get()? "1" : "0";
+    // ret += c.get()? "1" : "0";
+    // ret += r.get()? "1" : "0";
+    ret += l.get()? "0" : "1";
+    ret += c.get()? "0" : "1";
+    ret += r.get()? "0" : "1";
+
     return ret;
   }
 

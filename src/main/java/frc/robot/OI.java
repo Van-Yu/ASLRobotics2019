@@ -45,10 +45,11 @@ public class OI {
 
     CARGO_DEPLOY_BUTTON.whileHeld(new ReleaseCargo());
 
-    HATCH_BUTTON.whenPressed(new HatchCommand());
+    // HATCH_BUTTON.whenPressed(new HatchCommand());
+    HATCH_BUTTON.whenPressed(new HatchForward());
 
-    LINE_FOLLOW_LEFT.whenPressed(new LineFollow(LineFollow.Direction.LEFT));
-    LINE_FOLLOW_RIGHT.whenPressed(new LineFollow(LineFollow.Direction.RIGHT));
+    LINE_FOLLOW_LEFT.whileHeld(new LineFollow(LineFollow.Direction.LEFT));
+    LINE_FOLLOW_RIGHT.whileHeld(new LineFollow(LineFollow.Direction.RIGHT));
 
     //ELEVATOR_1.whileHeld(new ElevatorStage1());
     //ELEVATOR_2.whileHeld(new ElevatorStage2());
