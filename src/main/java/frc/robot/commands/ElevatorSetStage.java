@@ -10,15 +10,21 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ElevatorInterrupt extends Command {
-  public ElevatorInterrupt() {
+public class ElevatorSetStage extends Command {
+
+  private int stg;
+
+  public ElevatorSetStage(int stage) {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.ELEVATOR);
+    // eg. requires(chassis);
+    this.stg = stage;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.ELEVATOR.checkForBall();
+    Robot.ELEVATOR.stage = stg;
   }
 
   // Called repeatedly when this Command is scheduled to run

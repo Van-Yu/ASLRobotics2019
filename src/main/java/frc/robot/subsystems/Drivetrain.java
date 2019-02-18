@@ -7,8 +7,10 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -28,7 +30,10 @@ public class Drivetrain extends Subsystem {
 
   private SpeedControllerGroup left;
   private SpeedControllerGroup right;
-  private DifferentialDrive driveTrain;
+  // private DifferentialDrive driveTrain;
+
+  private DigitalInput l, c, r;
+
 
   public Drivetrain(){
     frontLeft = new WPI_TalonSRX(RobotMap.FRONT_LEFT_DRIVE_MOTOR);
@@ -38,15 +43,51 @@ public class Drivetrain extends Subsystem {
 
     left = new SpeedControllerGroup(frontLeft, backLeft);
     right = new SpeedControllerGroup(frontRight, backRight);
-    driveTrain = new DifferentialDrive(left, right);
+    // driveTrain = new DifferentialDrive(left, right);
+
+    l = new DigitalInput(RobotMap.PHOTO_SWITCH_LEFT);
+    c = new DigitalInput(RobotMap.PHOTO_SWITCH_CENTER);
+    r = new DigitalInput(RobotMap.PHOTO_SWITCH_RIGHT);
+
+    frontLeft.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
+    frontLeft.setSensorPhase(true);
+
+    frontRight.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
+    frontRight.setSensorPhase(true);
+
 
   }
   public void tankDrive(double leftSpeed, double rightSpeed){
-    driveTrain.tankDrive(leftSpeed, rightSpeed);
+    // driveTrain.tankDrive(leftSpeed, rightSpeed);
+    left.set(leftSpeed);
+    right.set(rightSpeed);
   }
   public void arcadeDrive(double x, double z){
-    driveTrain.arcadeDrive(x, z);
+    // driveTrain.arcadeDrive(x*.85, z*.6);
+    x *= .85;
+    z *= .6;
+    tankDrive(x+z, x-z);
   }
+
+  public String getPESensors(){ // REVERSE THIS AT COMPETITION
+    String ret = "";
+
+    ret += l.get()? "1" : "0";
+    ret += c.get()? "1" : "0";
+    ret += r.get()? "1" : "0";
+    // ret += l.get()? "0" : "1";
+    // ret += c.get()? "0" : "1";
+    // ret += r.get()? "0" : "1";
+
+    return ret;
+  }
+
+  public int getLeftEncoderSpeed() { return frontLeft.getSelectedSensorVelocity(); }
+  public int getRightEncoderSpeed() { return frontRight.getSelectedSensorVelocity(); }
+
+  public boolean getLeftSensor(){ return l.get(); }
+  public boolean getCenterSensor(){ return c.get(); }
+  public boolean getRightSensor(){ return r.get(); }
 
   @Override
   public void initDefaultCommand() {
