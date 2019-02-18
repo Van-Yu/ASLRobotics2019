@@ -47,34 +47,35 @@ public class Elevator extends Subsystem {
     return (RobotMap.hasBall) ? BALL_ENCODER_VALUES : HATCH_ENCODER_VALUES;
   }
 
-  // public void setStage(int stage) { //0 - botton, 1- 1, 2 - 2, etc.
-  //   //increments the distance by either 30 or 10, depending on even or odd.
-  //   double encoderValue = ((RobotMap.hasBall) ? BALL_ENCODER_VALUES[stage] : HATCH_ENCODER_VALUES[stage]);
-  //   if(encoderValue > MAX_HEIGHT) {
-  //     encoderValue = MAX_HEIGHT;
-  //   }
-  //
-  //   setMotorPosition(encoderValue);
-  // }
-
   public void checkForBall() {
     // RobotMap.hasBall = ballSensor.get();
     if(ballSensor.get()) RobotMap.hasBall = true;
   }
+  public boolean getBallSensor(){
+    return ballSensor.get();
+  }
 
-  // public double getTargetDistance(int stage) { 
-  //   return RobotMap.hasBall ? BALL_ENCODER_VALUES[stage] : HATCH_ENCODER_VALUES[stage];
-  // }
+  public void resetArrays(){
+    HATCH_ENCODER_VALUES[0] = RobotMap.HATCH_STAGE_1;
+    HATCH_ENCODER_VALUES[1] = RobotMap.HATCH_STAGE_2;
+    HATCH_ENCODER_VALUES[2] = RobotMap.HATCH_STAGE_3;
 
-  public double getEncoderDistance() { return pulleyMotor.getSelectedSensorPosition(); }
+    BALL_ENCODER_VALUES[0] = RobotMap.BALL_STAGE_1;
+    BALL_ENCODER_VALUES[1] = RobotMap.BALL_STAGE_2;
+    BALL_ENCODER_VALUES[2] = RobotMap.BALL_STAGE_3;
+  }
 
-  public void setMotorPosition(double position) { pulleyMotor.set(ControlMode.Position, position); }
+  public double getEncoderDistance() { return -pulleyMotor.getSelectedSensorPosition(); }
+
+  public void setMotorPosition(double position) { pulleyMotor.set(ControlMode.Position, -position); }
 
   public void setMotorSpeed(double speed) { pulleyMotor.set(speed);}
 
   public void stopMotor() { pulleyMotor.set(ControlMode.Current, 0); }
 
-  public boolean isDown(){ return isDownLimit.get(); }
+  public boolean isDown(){ return !isDownLimit.get(); }
+
+  public void resetEncoder(){ pulleyMotor.setSelectedSensorPosition(0); }
 
   @Override
   public void initDefaultCommand() {

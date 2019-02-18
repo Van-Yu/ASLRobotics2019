@@ -27,7 +27,8 @@ public class ElevatorManualCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.ELEVATOR.setMotorSpeed(-Robot.oi.OPERATOR.getRawAxis(RobotMap.OPERATOR_ELEVATOR_AXIS));
+    if(Robot.ELEVATOR.isDown() && -Robot.oi.OPERATOR.getRawAxis(RobotMap.OPERATOR_ELEVATOR_AXIS) <= 0) Robot.ELEVATOR.setMotorSpeed(0);
+    else Robot.ELEVATOR.setMotorSpeed(-Robot.oi.OPERATOR.getRawAxis(RobotMap.OPERATOR_ELEVATOR_AXIS));
   }
 
   // Make this return true when this Command no longer needs to run execute()

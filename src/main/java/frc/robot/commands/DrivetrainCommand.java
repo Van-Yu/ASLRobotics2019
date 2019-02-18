@@ -35,20 +35,22 @@ public class DrivetrainCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_TURN_AXIS)>-.002 && Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_TURN_AXIS)<.002){
-      lspeed = Robot.DRIVETRAIN.getLeftEncoderSpeed();
-      rspeed = Robot.DRIVETRAIN.getRightEncoderSpeed();
-      if(lspeed > rspeed){
-        loffset -= .001;
-        roffset +=.001;
-      } else if(lspeed != rspeed) {
-        loffset += .001;
-        roffset -=.001;
-      }
-    } else {
-      loffset = 0;
-      roffset = 0;
-    }
+    // if(Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_TURN_AXIS)>-.002 && 
+    //       Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_TURN_AXIS)<.002 && 
+    //       Math.abs(Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_FORWARD_AXIS))>.1){
+    //   lspeed = Robot.DRIVETRAIN.getLeftEncoderSpeed();
+    //   rspeed = Robot.DRIVETRAIN.getRightEncoderSpeed();
+    //   if(lspeed > rspeed){
+    //     loffset -= .001;
+    //     roffset +=.001;
+    //   } else if(lspeed != rspeed) {
+    //     loffset += .001;
+    //     roffset -=.001;
+    //   }
+    // } else {
+    //   loffset = 0;
+    //   roffset = 0;
+    // }
 
     Robot.DRIVETRAIN.arcadeDrive(loffset-Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_FORWARD_AXIS), roffset+Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_TURN_AXIS));
   }

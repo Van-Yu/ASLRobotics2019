@@ -55,8 +55,8 @@ public class LineFollow extends Command {
       //   left = RobotMap.LINE_FOLLOW_SPEED;
       //   right = RobotMap.LINE_FOLLOW_SPEED;
       // }
-      // left += .005;
-      // right -= .005;
+      // left += .01;
+      // right -= .01;
       direction = Direction.RIGHT;
       spin();
     } else if (sensors.equals("100") || sensors.equals("110")) {
@@ -64,8 +64,8 @@ public class LineFollow extends Command {
       //   left = RobotMap.LINE_FOLLOW_SPEED;
       //   right = RobotMap.LINE_FOLLOW_SPEED;
       // }
-      // left -= .005;
-      // right += .005;
+      // left -= .01;
+      // right += .01;
       direction = Direction.LEFT;
       spin();
     }

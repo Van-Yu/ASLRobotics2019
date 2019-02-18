@@ -31,7 +31,8 @@ public class ElevatorAutoCommand extends Command {
   protected void execute() {
     //if(Robot.ELEVATOR.isDown()) Robot.ELEVATOR.
     targets = Robot.ELEVATOR.getTargetArray();
-    if(!RobotMap.hasBall && !Robot.ELEVATOR.isDown()) Robot.ELEVATOR.setMotorSpeed(-.25);
+    if(!RobotMap.hasBall && !Robot.ELEVATOR.isDown() &&
+      Robot.oi.OPERATOR.getRawAxis(RobotMap.OPERATOR_ELEVATOR_AXIS) < .005) Robot.ELEVATOR.setMotorSpeed(-.4);
     else Robot.ELEVATOR.setMotorPosition(targets[Robot.ELEVATOR.stage-1]);
   }
 
