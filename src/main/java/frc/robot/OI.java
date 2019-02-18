@@ -45,8 +45,7 @@ public class OI {
 
     CARGO_DEPLOY_BUTTON.whileHeld(new ReleaseCargo());
 
-    // HATCH_BUTTON.whenPressed(new HatchCommand());
-    HATCH_BUTTON.whenPressed(new HatchForward());
+    HATCH_BUTTON.whenPressed(new HatchCommand());
 
     LINE_FOLLOW_LEFT.whileHeld(new LineFollow(LineFollow.Direction.LEFT));
     LINE_FOLLOW_RIGHT.whileHeld(new LineFollow(LineFollow.Direction.RIGHT));

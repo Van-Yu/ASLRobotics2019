@@ -30,7 +30,7 @@ public class Drivetrain extends Subsystem {
 
   private SpeedControllerGroup left;
   private SpeedControllerGroup right;
-  private DifferentialDrive driveTrain;
+  // private DifferentialDrive driveTrain;
 
   private DigitalInput l, c, r;
 
@@ -43,7 +43,7 @@ public class Drivetrain extends Subsystem {
 
     left = new SpeedControllerGroup(frontLeft, backLeft);
     right = new SpeedControllerGroup(frontRight, backRight);
-    driveTrain = new DifferentialDrive(left, right);
+    // driveTrain = new DifferentialDrive(left, right);
 
     l = new DigitalInput(RobotMap.PHOTO_SWITCH_LEFT);
     c = new DigitalInput(RobotMap.PHOTO_SWITCH_CENTER);
@@ -58,24 +58,32 @@ public class Drivetrain extends Subsystem {
 
   }
   public void tankDrive(double leftSpeed, double rightSpeed){
-    driveTrain.tankDrive(leftSpeed, rightSpeed);
+    // driveTrain.tankDrive(leftSpeed, rightSpeed);
+    left.set(leftSpeed);
+    right.set(rightSpeed);
   }
   public void arcadeDrive(double x, double z){
-    driveTrain.arcadeDrive(x, z*.7);
+    // driveTrain.arcadeDrive(x*.85, z*.6);
+    x *= .85;
+    z *= .6;
+    tankDrive(x+z, x-z);
   }
 
   public String getPESensors(){ // REVERSE THIS AT COMPETITION
     String ret = "";
 
-    // ret += l.get()? "1" : "0";
-    // ret += c.get()? "1" : "0";
-    // ret += r.get()? "1" : "0";
-    ret += l.get()? "0" : "1";
-    ret += c.get()? "0" : "1";
-    ret += r.get()? "0" : "1";
+    ret += l.get()? "1" : "0";
+    ret += c.get()? "1" : "0";
+    ret += r.get()? "1" : "0";
+    // ret += l.get()? "0" : "1";
+    // ret += c.get()? "0" : "1";
+    // ret += r.get()? "0" : "1";
 
     return ret;
   }
+
+  public int getLeftEncoderSpeed() { return frontLeft.getSelectedSensorVelocity(); }
+  public int getRightEncoderSpeed() { return frontRight.getSelectedSensorVelocity(); }
 
   public boolean getLeftSensor(){ return l.get(); }
   public boolean getCenterSensor(){ return c.get(); }

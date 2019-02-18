@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -23,6 +24,8 @@ import frc.robot.subsystems.*;
  * project.
  */
 public class Robot extends TimedRobot {
+
+  public static final PowerDistributionPanel pdp = new PowerDistributionPanel();
 
   public static final Drivetrain DRIVETRAIN = new Drivetrain();
   public static final Hatch HATCH = new Hatch();
@@ -48,8 +51,10 @@ public class Robot extends TimedRobot {
     SmartDashboard.putBoolean("l", DRIVETRAIN.getLeftSensor());
     SmartDashboard.putBoolean("c", DRIVETRAIN.getCenterSensor());
     SmartDashboard.putBoolean("r", DRIVETRAIN.getRightSensor());
-    SmartDashboard.putBoolean("Elevator Down", ELEVATOR.isDown());
+    SmartDashboard.putBoolean("ElevatorDown", ELEVATOR.isDown());
     SmartDashboard.putBoolean("HasBall", RobotMap.hasBall);
+
+    SmartDashboard.putNumber("ElevatorEncoder", ELEVATOR.getEncoderDistance());
   }
 
   /**
@@ -62,11 +67,17 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    ELEVATOR.checkForBall();
+
     SmartDashboard.getEntry("l").forceSetBoolean(DRIVETRAIN.getLeftSensor());
     SmartDashboard.getEntry("c").forceSetBoolean(DRIVETRAIN.getCenterSensor());
     SmartDashboard.getEntry("r").forceSetBoolean(DRIVETRAIN.getRightSensor());
     SmartDashboard.getEntry("ElevatorDown").forceSetBoolean(ELEVATOR.isDown());
     SmartDashboard.getEntry("HasBall").forceSetBoolean(RobotMap.hasBall);
+
+    SmartDashboard.getEntry("ElevatorEncoder").forceSetNumber(ELEVATOR.getEncoderDistance());
+
+    System.out.println(pdp.getCurrent(0)); //ALSO USEFUL: motor speed, batery voltage, enc position, motor current, joystick signal
   }
 
   /**

@@ -23,9 +23,9 @@ import frc.robot.commands.ElevatorManualCommand;
 public class Elevator extends Subsystem {
   
   // 30 60 90- hatch 40 70 100- ball
-  private final double[] HATCH_ENCODER_VALUES = {0, 0, 0, 0};// {offset, gnd, hatch2, hatch3}; // CHANGE THESE
-  private final double[] BALL_ENCODER_VALUES = {0, 0, 0, 0};// {offset, ball1, ball2, ball3}; // CHANGE THESE
-  public int stage = 1; // 0-offset, 1-stg 1, 2-stg 2, 3-stg3
+  private final double[] HATCH_ENCODER_VALUES = {0, 0, 0};// {gnd, hatch2, hatch3}; // CHANGE THESE
+  private final double[] BALL_ENCODER_VALUES = {0, 0, 0};// {ball1, ball2, ball3}; // CHANGE THESE
+  public int stage = 1;
 
   // private final double MAX_HEIGHT = 300; // CHANGE THIS 
 
@@ -66,7 +66,7 @@ public class Elevator extends Subsystem {
   //   return RobotMap.hasBall ? BALL_ENCODER_VALUES[stage] : HATCH_ENCODER_VALUES[stage];
   // }
 
-  // public double getEncoderDistance() { return pulleyMotor.getSelectedSensorPosition(); }
+  public double getEncoderDistance() { return pulleyMotor.getSelectedSensorPosition(); }
 
   public void setMotorPosition(double position) { pulleyMotor.set(ControlMode.Position, position); }
 

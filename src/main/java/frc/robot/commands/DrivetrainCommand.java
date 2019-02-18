@@ -12,6 +12,10 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class DrivetrainCommand extends Command {
+
+  private double loffset, roffset;
+  private int lspeed, rspeed;
+
   public DrivetrainCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -22,12 +26,31 @@ public class DrivetrainCommand extends Command {
   @Override
   protected void initialize() {
     Robot.DRIVETRAIN.tankDrive(0, 0);
+    loffset = 0;
+    roffset = 0;
+    lspeed = 0;
+    rspeed = 0;
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.DRIVETRAIN.arcadeDrive(-Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_FORWARD_AXIS), Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_TURN_AXIS));
+    if(Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_TURN_AXIS)>-.002 && Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_TURN_AXIS)<.002){
+      lspeed = Robot.DRIVETRAIN.getLeftEncoderSpeed();
+      rspeed = Robot.DRIVETRAIN.getRightEncoderSpeed();
+      if(lspeed > rspeed){
+        loffset -= .001;
+        roffset +=.001;
+      } else if(lspeed != rspeed) {
+        loffset += .001;
+        roffset -=.001;
+      }
+    } else {
+      loffset = 0;
+      roffset = 0;
+    }
+
+    Robot.DRIVETRAIN.arcadeDrive(loffset-Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_FORWARD_AXIS), roffset+Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_TURN_AXIS));
   }
 
   // Make this return true when this Command no longer needs to run execute()

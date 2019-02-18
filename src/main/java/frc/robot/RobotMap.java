@@ -45,10 +45,10 @@ public class RobotMap {
 
 
   // MOTORS
-  public static final int FRONT_LEFT_DRIVE_MOTOR = 2;
-  public static final int BACK_LEFT_DRIVE_MOTOR = 1;
-  public static final int FRONT_RIGHT_DRIVE_MOTOR = 4;
-  public static final int BACK_RIGHT_DRIVE_MOTOR = 3;
+  public static final int FRONT_LEFT_DRIVE_MOTOR = 1;
+  public static final int BACK_LEFT_DRIVE_MOTOR = 2;
+  public static final int FRONT_RIGHT_DRIVE_MOTOR = 3;
+  public static final int BACK_RIGHT_DRIVE_MOTOR = 4;
 
   public static final int ELEVATOR_MOTOR = 5;
 
@@ -63,8 +63,8 @@ public class RobotMap {
   public static final int HATCH_PISTON_1 = 3;
   public static final int HATCH_PISTON_2 = 2;
 
-  public static final int INTAKE_LIFT_PISTON_1 = 0;
-  public static final int INTAKE_LIFT_PISTON_2 = 1;
+  public static final int INTAKE_LIFT_PISTON_1 = 1;
+  public static final int INTAKE_LIFT_PISTON_2 = 0;
 
 
   // DIGITAL INPUTS
@@ -87,6 +87,9 @@ public class RobotMap {
     // elevator
   public static final double ELEVATOR_LIFT_SPEED = .4;
   public static final double ELEVATOR_DOWN_SPEED = -.4;
+
+  // drivetrain
+  public static final double LINE_FOLLOW_SPEED = .5;
 
 
   // OTHER

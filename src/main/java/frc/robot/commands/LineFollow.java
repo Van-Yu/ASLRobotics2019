@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class LineFollow extends Command {
 
@@ -27,8 +28,8 @@ public class LineFollow extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    right = .4;
-    left = .4;
+    right = RobotMap.LINE_FOLLOW_SPEED;
+    left = RobotMap.LINE_FOLLOW_SPEED;
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -38,32 +39,35 @@ public class LineFollow extends Command {
 
     // if(sensors.equals("000") || sensors.equals("111")){
     if (sensors.equals("000") || sensors.equals("111")) {
-      if (direction == Direction.RIGHT) {
-        left = .4;
-        right = -.4;
-      } else {
-        left = -.4;
-        right = .4;
-      }
+      // if (direction == Direction.RIGHT) {
+      //   left = RobotMap.LINE_FOLLOW_SPEED;
+      //   right = -RobotMap.LINE_FOLLOW_SPEED;
+      // } else {
+      //   left = -RobotMap.LINE_FOLLOW_SPEED;
+      //   right = RobotMap.LINE_FOLLOW_SPEED;
+      // }
+      spin();
     } else if (sensors.equals("010")) {
-      left = .4;
-      right = .4;
+      left = RobotMap.LINE_FOLLOW_SPEED;
+      right = RobotMap.LINE_FOLLOW_SPEED;
     } else if (sensors.equals("001") || sensors.equals("011")) {
-      if ((int) (left * 10) == (int) (-left * 10)) {
-        left = .4;
-        right = .4;
-      }
-      left += .003;
-      right -= .003;
+      // if ((int) (left * 10) == (int) (-left * 10)) {
+      //   left = RobotMap.LINE_FOLLOW_SPEED;
+      //   right = RobotMap.LINE_FOLLOW_SPEED;
+      // }
+      // left += .005;
+      // right -= .005;
       direction = Direction.RIGHT;
+      spin();
     } else if (sensors.equals("100") || sensors.equals("110")) {
-      if ((int) (left * 10) == (int) (-left * 10)) {
-        left = .4;
-        right = .4;
-      }
-      left -= .003;
-      right += .003;
+      // if ((int) (left * 10) == (int) (-left * 10)) {
+      //   left = RobotMap.LINE_FOLLOW_SPEED;
+      //   right = RobotMap.LINE_FOLLOW_SPEED;
+      // }
+      // left -= .005;
+      // right += .005;
       direction = Direction.LEFT;
+      spin();
     }
 
     Robot.DRIVETRAIN.tankDrive(left, right);
@@ -78,12 +82,23 @@ public class LineFollow extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.DRIVETRAIN.arcadeDrive(0, 0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.DRIVETRAIN.arcadeDrive(0, 0);
+    end();
+  }
+
+  private void spin(){
+    if (direction == Direction.RIGHT) {
+      left = RobotMap.LINE_FOLLOW_SPEED;
+      right = -RobotMap.LINE_FOLLOW_SPEED;
+    } else {
+      left = -RobotMap.LINE_FOLLOW_SPEED;
+      right = RobotMap.LINE_FOLLOW_SPEED;
+    }
   }
 }
