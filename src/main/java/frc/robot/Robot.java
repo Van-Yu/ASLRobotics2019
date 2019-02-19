@@ -55,6 +55,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putBoolean("HasBall", RobotMap.hasBall);
 
     SmartDashboard.putNumber("ElevatorEncoder", ELEVATOR.getEncoderDistance());
+    SmartDashboard.putNumber("LeftSpeed", DRIVETRAIN.getLeftEncoderSpeed());
+    SmartDashboard.putNumber("RightSpeed", DRIVETRAIN.getRightEncoderSpeed());
   }
 
   /**
@@ -68,16 +70,23 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
     ELEVATOR.checkForBall();
+    if(ELEVATOR.isDown()){
+      ELEVATOR.resetEncoder();
+      ELEVATOR.resetArrays();
+    }
 
     SmartDashboard.getEntry("l").forceSetBoolean(DRIVETRAIN.getLeftSensor());
     SmartDashboard.getEntry("c").forceSetBoolean(DRIVETRAIN.getCenterSensor());
     SmartDashboard.getEntry("r").forceSetBoolean(DRIVETRAIN.getRightSensor());
     SmartDashboard.getEntry("ElevatorDown").forceSetBoolean(ELEVATOR.isDown());
-    SmartDashboard.getEntry("HasBall").forceSetBoolean(RobotMap.hasBall);
+    SmartDashboard.getEntry("HasBall").forceSetBoolean(/*RobotMap.hasBall*/ELEVATOR.getBallSensor());
 
     SmartDashboard.getEntry("ElevatorEncoder").forceSetNumber(ELEVATOR.getEncoderDistance());
+    SmartDashboard.getEntry("LeftSpeed").forceSetNumber(DRIVETRAIN.getLeftEncoderSpeed());
+    SmartDashboard.getEntry("RightSpeed").forceSetNumber(DRIVETRAIN.getRightEncoderSpeed());
 
-    System.out.println(pdp.getCurrent(0)); //ALSO USEFUL: motor speed, batery voltage, enc position, motor current, joystick signal
+    // System.out.println(pdp.getCurrent(10)); //ALSO USEFUL: motor speed, batery voltage, enc position, motor current, joystick signal
+    // System.out.println(": "+ELEVATOR.getEncoderDistance());
   }
 
   /**
@@ -147,6 +156,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+    System.out.println(pdp.getCurrent(10));
   }
 
   /**

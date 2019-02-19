@@ -13,7 +13,6 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
 
 import frc.robot.commands.DrivetrainCommand;
@@ -59,8 +58,10 @@ public class Drivetrain extends Subsystem {
   }
   public void tankDrive(double leftSpeed, double rightSpeed){
     // driveTrain.tankDrive(leftSpeed, rightSpeed);
+    leftSpeed *= Math.abs(leftSpeed);
+    rightSpeed *= Math.abs(rightSpeed);
     left.set(leftSpeed);
-    right.set(rightSpeed);
+    right.set(-rightSpeed);
   }
   public void arcadeDrive(double x, double z){
     // driveTrain.arcadeDrive(x*.85, z*.6);

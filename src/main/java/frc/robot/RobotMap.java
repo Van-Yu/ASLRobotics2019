@@ -26,16 +26,18 @@ public class RobotMap {
 
   
   public static final int CARGO_BUTTON_PORT = 6;
-  public static final int CARGO_ARM_DOWN_BUTTON_PORT = 9;
+        // public static final int CARGO_ARM_DOWN_BUTTON_PORT = 9;
 
   public static final int DEPLOY_CARGO_BUTTON_PORT = 5;
 
   public static final int HATCH_BUTTON_PORT = 3;
 
-  // public static final int ELEVATOR_1_BUTTON_PORT = 1;
-  // public static final int ELEVATOR_2_BUTTON_PORT = 3;
-  // public static final int ELEVATOR_3_BUTTON_PORT = 4;
-  // public static final int ELEVATOR_INTERRUPT_BUTTON_PORT = 9;
+  public static final int ARM_UP_BUTTON_PORT = 7;
+
+  public static final int ELEVATOR_1_BUTTON_PORT = 1;
+  public static final int ELEVATOR_2_BUTTON_PORT = 3;
+  public static final int ELEVATOR_3_BUTTON_PORT = 4;
+  public static final int ELEVATOR_MANUAL_BUTTON_PORT = 8;
 
     // axes
   public static final int DRIVE_FORWARD_AXIS = 1;
@@ -88,12 +90,23 @@ public class RobotMap {
   public static final double ELEVATOR_LIFT_SPEED = .4;
   public static final double ELEVATOR_DOWN_SPEED = -.4;
 
-  // drivetrain
-  public static final double LINE_FOLLOW_SPEED = .5;
+    // drivetrain
+  public static final double LINE_FOLLOW_SPEED = .55;
+
+
+  // ELEVATOR STAGES
+  public static final int BALL_STAGE_1 = 0;
+  public static final int BALL_STAGE_2 = 0;
+  public static final int BALL_STAGE_3 = 0;
+
+  public static final int HATCH_STAGE_1 = 0;
+  public static final int HATCH_STAGE_2 = 0;
+  public static final int HATCH_STAGE_3 = 0;
 
 
   // OTHER
   public static final int PISTON_DELAY_TIME = 1000;
   public static boolean hasBall = false;
+
 
 }
